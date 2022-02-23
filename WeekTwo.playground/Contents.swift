@@ -94,4 +94,55 @@
 import UIKit
 
 // Start your solution from here...
-var greeting = "Hello, playground"
+
+
+//Creating A Demo Account with Class Account
+// MARK: - Checking out the properties and methods in Account Class
+var account1 : Account = Account(id: 0001, customerId: 0111352776)
+print(account1.accountBalance)
+//Trying to deposit #0
+print(account1.deposit(0))
+//Trying to deposit money
+print(account1.deposit(100_000_00))
+//Trying to call the bonus method
+print(account1.bonus())
+//Trying to withdraw more than the account balance
+print(account1.withdrawal(2000000000))
+// Withdrawing from the Account
+print(account1.withdrawal(100000))
+// calling the function of charge
+print(account1.charge())
+
+//Creating A Demo Account with Class Account
+// MARK: - Checking out the properties and methods in SavingAccount Class
+var account2 : SavingsAccount = SavingsAccount(id: 002, customerId: 0113255673)
+print(account2.accountBalance)
+//Trying to deposit #0
+print(account2.deposit(0))
+//Trying to deposit money
+print(account2.deposit(100_000_00))
+//Trying to call the bonus method
+print(account2.bonus())
+//Trying to withdraw more than the account balance
+print(account2.withdrawal(2000000000))
+// Withdrawing from the Account
+print(account2.withdrawal(100000))
+// calling the function of charge
+print(account2.charge())
+
+// MARK: - Checking out the properties and methods in CurrentAccount Class
+var account3 : CurrentAccount = CurrentAccount(id: 003, customerId: 0117879900)
+print(account3.accountBalance)
+//Trying to deposit #0
+print(account3.deposit(0))
+//Trying to deposit money
+print(account3.deposit(100_000_00))
+//Trying to call the bonus method
+print(account3.bonus())
+//Trying to withdraw more than the account balance
+print(account3.withdrawal(2000000000))
+// Withdrawing from the Account
+print(account3.withdrawal(100000))
+// calling the function of charge
+print(account3.charge())
+//customer1: Customer = Customer
