@@ -26,7 +26,7 @@ public class Customer {
         if let accounts = self.accounts {
             for item in accounts {
                 if item === account {
-                    return "You account balance from acct no \(account.customerId) is #\(String(item.accountBalance/100))"
+                    return "Your account balance from acct no \(account.customerId) is #\(String(item.accountBalance/100))"
                 }
             }
         }
@@ -55,16 +55,14 @@ public class Customer {
     public func openAccount(accountType: AccountType) -> [Account]? {
         switch accountType {
         case .savings:
-            let newAccount = SavingsAccount(id: 0111352776, customerId: id, interestRate: 0.10)
+            let newAccount = SavingsAccount(id: id, customerId: 0113789032, interestRate: 0.10)
             self.accounts?.append(newAccount)
             return self.accounts
         case .current:
-            let newAccount = CurrentAccount(id: 2333379, customerId: id, interestRate: 0.05)
+            let newAccount = CurrentAccount(id: id, customerId: 0113789445, interestRate: 0.05)
             self.accounts?.append(newAccount)
             return self.accounts
-            
         }
-        
     }
     
     public func closeAccount(accountType: AccountType) -> [Account]? {
@@ -75,10 +73,10 @@ public class Customer {
         case .current:
             self.accounts?.removeLast()
             return self.accounts
-            
         }
     }
 }
+
 // MARK: - Enums
 public enum AccountType {
     case savings

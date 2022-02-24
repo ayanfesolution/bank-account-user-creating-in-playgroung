@@ -171,3 +171,6 @@ print(client1.deposit(account: account2, amount: 3000000))
 print(client1.deposit(account: account3, amount: 3000000))
 //MARK: - Testing opening of new account for Ayanfe Afolabi
 client1.openAccount(accountType: .savings)
+client1.accounts![3]
+//MARK: - Testing closing of new account for Ayanfe Afolabi
+client1.closeAccount(accountType: .savings)
