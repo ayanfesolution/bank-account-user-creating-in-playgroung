@@ -4,15 +4,15 @@ public class Customer {
     
     // MARK: - Properties
     
-    private let id: Int
-    private var name: String
-    private var address: String
-    private var phoneNumber: String
-    private var accounts: [Account]? = []
+    public let id: Int
+    public var name: String
+    public var address: String
+    public var phoneNumber: String
+    public var accounts: [Account]?
     
     
     // MARK: - Initializers
-    public init(id: Int, name: String, address: String, phoneNumber: String, accounts: [Account]? = []) {
+    public init(id: Int, name: String, address: String, phoneNumber: String, accounts: [Account]) {
         self.id = id
         self.name = name
         self.address = address
@@ -26,7 +26,7 @@ public class Customer {
         if let accounts = self.accounts {
             for item in accounts {
                 if item === account {
-                    return String(item.accountBalance)
+                    return "You account balance from acct no \(account.customerId) is #\(String(item.accountBalance/100))"
                 }
             }
         }
@@ -40,7 +40,7 @@ public class Customer {
             return "Insuffienct Account balance"
         }
         currentBalance -= amount
-        return "Your withdrawal of \(amount) is Successful, new balance is now \(currentBalance)"
+        return "Your withdrawal of #\(amount / 100) is Successful from acct no \(account.customerId), new balance is now #\(currentBalance / 100)"
     }
     
     public func deposit(account: Account, amount: Int) -> String {
@@ -49,7 +49,7 @@ public class Customer {
             return "You can't deposit #0"
         }
         currentBalance += amount
-        return "Your deposit of \(amount) is Successful, new balance is now \(currentBalance)"
+        return "Your deposit of #\(amount / 100) is Successful from acct no \(account.customerId), new balance is now #\(currentBalance / 100)"
     }
     
     public func openAccount(accountType: AccountType) -> [Account]? {
@@ -70,10 +70,10 @@ public class Customer {
     public func closeAccount(accountType: AccountType) -> [Account]? {
         switch accountType {
         case .savings:
-            self.accounts?.remove(at: 1)
+            self.accounts?.removeLast()
             return self.accounts
         case .current:
-            self.accounts?.remove(at: 2)
+            self.accounts?.removeLast()
             return self.accounts
             
         }

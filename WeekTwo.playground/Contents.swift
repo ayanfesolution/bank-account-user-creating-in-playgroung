@@ -92,6 +92,7 @@
 //:
 //:   Endeavour to convert back to naira when printing result..
 import UIKit
+import Foundation
 
 // Start your solution from here...
 
@@ -99,7 +100,7 @@ import UIKit
 //Creating A Demo Account with Class Account
 // MARK: - Checking out the properties and methods in Account Class
 var account1 : Account = Account(id: 0001, customerId: 0111352776)
-print(account1.accountBalance)
+print("\nChecking out the properties and methods in Account Class \n\(account1.accountBalance)")
 //Trying to deposit #0
 print(account1.deposit(0))
 //Trying to deposit money
@@ -115,8 +116,8 @@ print(account1.charge())
 
 //Creating A Demo Account with Class Account
 // MARK: - Checking out the properties and methods in SavingAccount Class
-var account2 : SavingsAccount = SavingsAccount(id: 002, customerId: 0113255673)
-print(account2.accountBalance)
+var account2 : SavingsAccount = SavingsAccount(id: 0001, customerId: 0113255673)
+print("\nChecking out the properties and methods in SavingAccount Class \n\(account2.accountBalance)")
 //Trying to deposit #0
 print(account2.deposit(0))
 //Trying to deposit money
@@ -130,9 +131,12 @@ print(account2.withdrawal(100000))
 // calling the function of charge
 print(account2.charge())
 
+
+
 // MARK: - Checking out the properties and methods in CurrentAccount Class
-var account3 : CurrentAccount = CurrentAccount(id: 003, customerId: 0117879900)
-print(account3.accountBalance)
+
+var account3 : CurrentAccount = CurrentAccount(id: 0001, customerId: 0117879900)
+print("\nChecking out the properties and methods in CurrentAccount Class \n\(account3.accountBalance)")
 //Trying to deposit #0
 print(account3.deposit(0))
 //Trying to deposit money
@@ -146,3 +150,24 @@ print(account3.withdrawal(100000))
 // calling the function of charge
 print(account3.charge())
 //customer1: Customer = Customer
+
+
+// MARK: -Let us assumed that account1, account2, account3 belongs to a client1 whose name is Ayanfe Afolabi
+let client1: Customer = Customer(id: account1.id, name: "Afolabi Ayanfe", address: "Edo", phoneNumber: "0695494", accounts: [account1,account2, account3])
+
+client1.accounts
+// MARK: - Testing for checking of account balance of customers
+print(client1.accounts!)
+print(client1.accountBalance(account1))
+print(client1.accountBalance(account2))
+print(client1.accountBalance(account3))
+//MARK: - Testing for withdrawing of money from all accounts of Ayanfe Afolabi
+print(client1.withdrawal(account: account1, amount: 1000000))
+print(client1.withdrawal(account: account2, amount: 1000000))
+print(client1.withdrawal(account: account3, amount: 1000000))
+//MARK: - Testing for depositing of money from all accounts of Ayanfe Afolabi
+print(client1.deposit(account: account1, amount: 3000000))
+print(client1.deposit(account: account2, amount: 3000000))
+print(client1.deposit(account: account3, amount: 3000000))
+//MARK: - Testing opening of new account for Ayanfe Afolabi
+client1.openAccount(accountType: .savings)
